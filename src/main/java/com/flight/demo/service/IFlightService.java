@@ -27,4 +27,12 @@ public interface IFlightService {
 	public String deleteFlight(int flightId);
 	
 	public String updateFlight(int flightId,Flight flight);
+	
+	List<Flight> getFlightsBySource(SourceLocation source);
+
+	List<Flight> getFlightsByDestination(DestinationLocation destination);
+
+	List<Flight> getFlightsBySourceAndDestination(
+	        SourceLocation source,
+	        DestinationLocation destination);
 }

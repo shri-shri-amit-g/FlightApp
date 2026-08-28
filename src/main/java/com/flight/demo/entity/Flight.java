@@ -15,6 +15,7 @@ import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,7 @@ public class Flight {
 	private int flightId;
 	
 	@Column(unique=true ,nullable=false)
-	private int flightNumber;
+	private String flightNumber;
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -46,9 +47,10 @@ public class Flight {
 	
 	@Min(1)
 	@NotNull
+	@Positive
 	private  int totalSeats;
 
-	public Flight(int flightNumber,RequestAirline airline,SourceLocation source,
+	public Flight(String flightNumber,RequestAirline airline,SourceLocation source,
 			DestinationLocation destination, int totalSeats) {
 		super();
 		this.flightNumber = flightNumber;

@@ -91,8 +91,8 @@ public class FlightServiceImpl implements IFlightService{
 				.orElseThrow(()-> new FlightNotFoundException("No such Flight Exist with flight id: "+flightId));
 		
 		if(repository.existsByFlightNumber(flight.getFlightNumber())
-		        && existingFlight.getFlightNumber()!=flight.getFlightNumber()) {
-		    throw new FlightAlreadyExisitsException("Flight number already exists");
+		        && existingFlight.getFlightNumber().equals(flight.getFlightNumber())) {
+		    throw new FlightAlreadyExisitsException("");
 		}
 		
 		existingFlight.setFlightNumber(flight.getFlightNumber());
@@ -102,6 +102,24 @@ public class FlightServiceImpl implements IFlightService{
 		existingFlight.setTotalSeats( flight.getTotalSeats());
 		repository.save(existingFlight);
 		return "Flight updated successfully";
+	}
+
+	@Override
+	public List<Flight> getFlightsBySource(SourceLocation source) {
+	    return repository.findAllBySource(source);
+	}
+
+	@Override
+	public List<Flight> getFlightsByDestination(DestinationLocation destination) {
+	    return repository.findAllByDestination(destination);
+	}
+
+	@Override
+	public List<Flight> getFlightsBySourceAndDestination(
+	        SourceLocation source,
+	        DestinationLocation destination) {
+
+	    return repository.findBySourceAndDestination(source, destination);
 	}
 
 }

@@ -12,9 +12,9 @@ import com.flight.demo.enums.SourceLocation;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight,Integer>{
 
-	boolean existsByFlightNumber(int flightNumber);
+	boolean existsByFlightNumber(String flightNumber);
 	
-	Flight findByFlightNumber(int flightNumber);
+	Flight findByFlightNumber(String flightNumber);
 	
 	List<Flight> findAllBySource(SourceLocation source);
 	

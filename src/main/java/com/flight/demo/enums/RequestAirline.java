@@ -1,10 +1,9 @@
 package com.flight.demo.enums;
 
 public enum RequestAirline {
-	QatarAirways,
-	AirIndia,
-	SingaporeAirlines, 
-	SpiceJet,
-	Indigo
-	
+    QATAR_AIRWAYS,
+    AIR_INDIA,
+    SINGAPORE_AIRLINES,
+    SPICEJET,
+    INDIGO
 }
